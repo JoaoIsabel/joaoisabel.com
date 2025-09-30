@@ -156,7 +156,8 @@ const pt = {
     commandNotRecognized: 'Comando não reconhecido',
     languageChanged: 'Idioma alterado',
     alreadyInPortuguese: 'Já está em português',
-    help: 'Diga: "português", "inglês" ou "mudar idioma"',
+    help: 'Diga: "português", "inglês" ou "mudar idioma" (Ctrl+M para ativar)',
+    shortcut: 'Pressione Ctrl+M para ativar comandos de voz',
   },
 }
 
@@ -300,7 +301,8 @@ const en = {
     commandNotRecognized: 'Command not recognized',
     languageChanged: 'Language changed',
     alreadyInEnglish: 'Already in English',
-    help: 'Say: "Portuguese", "English" or "change language"',
+    help: 'Say: "Portuguese", "English" or "change language" (Ctrl+M to activate)',
+    shortcut: 'Press Ctrl+M to activate voice commands',
   },
 }
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
 import { useSpeechRecognition } from './composables/useSpeechRecognition'
 
 const { t, locale } = useI18n()
@@ -71,6 +71,24 @@ watch(error, (newError) => {
     showTemporaryMessage(t('voice.error'), 2000)
   }
 })
+
+// Funcionalidade de atalho de teclado
+const handleKeyDown = (event: KeyboardEvent) => {
+  // Ctrl + M para ativar/desativar comando de voz
+  if (event.ctrlKey && event.key.toLowerCase() === 'm') {
+    event.preventDefault()
+    toggleVoiceCommand()
+  }
+}
+
+// Adicionar e remover event listeners
+onMounted(() => {
+  document.addEventListener('keydown', handleKeyDown)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('keydown', handleKeyDown)
+})
 </script>
 
 <template>
@@ -89,7 +107,7 @@ watch(error, (newError) => {
               @click="toggleVoiceCommand"
               :class="{ listening: isListening }"
               class="voice-btn"
-              :title="t('voice.button')"
+              :title="`${t('voice.button')} (Ctrl+M)`"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path
@@ -99,6 +117,7 @@ watch(error, (newError) => {
               <span class="voice-text">{{
                 isListening ? t('voice.listening') : t('voice.button')
               }}</span>
+              <span class="keyboard-shortcut">Ctrl+M</span>
             </button>
 
             <div class="language-selector">
@@ -351,6 +370,17 @@ main {
   white-space: nowrap;
 }
 
+.keyboard-shortcut {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  margin-left: 0.25rem;
+  font-family: monospace;
+  white-space: nowrap;
+}
+
 @keyframes pulse {
   0% {
     opacity: 1;
@@ -442,6 +472,10 @@ main {
   }
 
   .voice-text {
+    display: none;
+  }
+
+  .keyboard-shortcut {
     display: none;
   }
 
