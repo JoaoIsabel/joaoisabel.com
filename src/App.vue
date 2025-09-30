@@ -27,9 +27,16 @@ import { RouterLink, RouterView } from 'vue-router'
   box-sizing: border-box;
 }
 
+html {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
   font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
     'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -37,9 +44,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#app {
+  width: 100% !important;
+  max-width: none !important;
+}
+
 /* Container utility class for consistent centering */
 .container {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -74,6 +86,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 header {
@@ -87,7 +100,7 @@ header {
 }
 
 nav {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 1rem;
   display: flex;

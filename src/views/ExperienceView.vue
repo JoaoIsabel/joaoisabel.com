@@ -163,10 +163,9 @@
 }
 
 .experience {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: clamp(1rem, 4vw, 5rem) clamp(1rem, 3vw, 3rem);
   width: 100%;
+  margin: 0 auto;
+  padding: clamp(1rem, 4vw, 5rem) clamp(1rem, 5vw, 4rem);
 }
 
 .experience h2 {
@@ -184,7 +183,7 @@
   text-align: center;
   margin-bottom: clamp(2rem, 5vw, 5rem);
   line-height: 1.6;
-  max-width: 800px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }

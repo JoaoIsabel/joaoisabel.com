@@ -78,10 +78,9 @@
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: clamp(1rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem);
   width: 100%;
+  margin: 0 auto;
+  padding: clamp(1rem, 4vw, 3rem) clamp(1rem, 5vw, 4rem);
 }
 
 .about-hero {
@@ -105,7 +104,7 @@
   font-size: clamp(1.1rem, 3vw, 1.8rem);
   color: #4a5568;
   line-height: 1.6;
-  max-width: 900px;
+  width: 100%;
   margin: 0 auto;
 }
 

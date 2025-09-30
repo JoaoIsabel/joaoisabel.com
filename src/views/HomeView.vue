@@ -41,9 +41,9 @@
 }
 
 .hero-content {
-  max-width: 900px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 clamp(1rem, 5vw, 4rem);
 }
 
 .hero h1 {
@@ -58,7 +58,7 @@
   margin-bottom: clamp(1.5rem, 4vw, 3rem);
   opacity: 0.95;
   line-height: 1.5;
-  max-width: 800px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -90,9 +90,9 @@
 }
 
 .container {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 clamp(1rem, 5vw, 4rem);
   text-align: center;
 }
 
@@ -107,7 +107,7 @@
   font-size: clamp(1rem, 2.5vw, 1.6rem);
   color: #4a5568;
   line-height: 1.7;
-  max-width: 900px;
+  width: 100%;
   margin: 0 auto;
 }
 
