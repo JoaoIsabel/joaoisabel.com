@@ -75,9 +75,11 @@ export function useSpeechRecognition() {
       }
 
       recognition.onresult = (event: SpeechRecognitionEvent) => {
-        const result = event.results[0][0].transcript.toLowerCase().trim()
-        transcript.value = result
-        console.log('Comando ouvido:', result)
+        if (event.results && event.results.length > 0 && event.results[0].length > 0) {
+          const result = event.results[0][0].transcript.toLowerCase().trim()
+          transcript.value = result
+          console.log('Comando ouvido:', result)
+        }
       }
 
       recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
