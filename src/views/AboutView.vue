@@ -2,6 +2,12 @@
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+
+// Helper function to get skills as array
+const getSkills = (category: string) => {
+  const skills = t(`about.skills.${category}.items`)
+  return Array.isArray(skills) ? skills : []
+}
 </script>
 
 <template>
@@ -27,23 +33,21 @@ const { t } = useI18n()
               <div class="skill-category">
                 <h3>{{ t('about.skills.frontend.title') }}</h3>
                 <ul>
-                  <li v-for="skill in t('about.skills.frontend.items')" :key="skill">
-                    {{ skill }}
-                  </li>
+                  <li v-for="skill in getSkills('frontend')" :key="skill">{{ skill }}</li>
                 </ul>
               </div>
 
               <div class="skill-category">
                 <h3>{{ t('about.skills.backend.title') }}</h3>
                 <ul>
-                  <li v-for="skill in t('about.skills.backend.items')" :key="skill">{{ skill }}</li>
+                  <li v-for="skill in getSkills('backend')" :key="skill">{{ skill }}</li>
                 </ul>
               </div>
 
               <div class="skill-category">
                 <h3>{{ t('about.skills.soft.title') }}</h3>
                 <ul>
-                  <li v-for="skill in t('about.skills.soft.items')" :key="skill">{{ skill }}</li>
+                  <li v-for="skill in getSkills('soft')" :key="skill">{{ skill }}</li>
                 </ul>
               </div>
             </div>

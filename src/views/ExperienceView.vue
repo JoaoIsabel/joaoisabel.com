@@ -2,6 +2,12 @@
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+
+// Helper function to get skills as array
+const getSkills = (jobKey: string) => {
+  const skills = t(`experience.jobs.${jobKey}.skills`)
+  return Array.isArray(skills) ? skills : []
+}
 </script>
 
 <template>
@@ -18,7 +24,7 @@ const { t } = useI18n()
           {{ t('experience.jobs.worten.description') }}
         </p>
         <ul class="skills">
-          <li v-for="skill in t('experience.jobs.worten.skills')" :key="skill">{{ skill }}</li>
+          <li v-for="skill in getSkills('worten')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
@@ -30,7 +36,7 @@ const { t } = useI18n()
           {{ t('experience.jobs.ja.description') }}
         </p>
         <ul class="skills">
-          <li v-for="skill in t('experience.jobs.ja.skills')" :key="skill">{{ skill }}</li>
+          <li v-for="skill in getSkills('ja')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
@@ -42,7 +48,7 @@ const { t } = useI18n()
           {{ t('experience.jobs.sheerme.description') }}
         </p>
         <ul class="skills">
-          <li v-for="skill in t('experience.jobs.sheerme.skills')" :key="skill">{{ skill }}</li>
+          <li v-for="skill in getSkills('sheerme')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
@@ -54,9 +60,7 @@ const { t } = useI18n()
           {{ t('experience.jobs.portugalRoots.description') }}
         </p>
         <ul class="skills">
-          <li v-for="skill in t('experience.jobs.portugalRoots.skills')" :key="skill">
-            {{ skill }}
-          </li>
+          <li v-for="skill in getSkills('portugalRoots')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
@@ -68,7 +72,7 @@ const { t } = useI18n()
           {{ t('experience.jobs.finantia.description') }}
         </p>
         <ul class="skills">
-          <li v-for="skill in t('experience.jobs.finantia.skills')" :key="skill">{{ skill }}</li>
+          <li v-for="skill in getSkills('finantia')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
@@ -80,7 +84,7 @@ const { t } = useI18n()
           {{ t('experience.jobs.neodent.description') }}
         </p>
         <ul class="skills">
-          <li v-for="skill in t('experience.jobs.neodent.skills')" :key="skill">{{ skill }}</li>
+          <li v-for="skill in getSkills('neodent')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
@@ -92,9 +96,7 @@ const { t } = useI18n()
           {{ t('experience.jobs.segurihigiene.description') }}
         </p>
         <ul class="skills">
-          <li v-for="skill in t('experience.jobs.segurihigiene.skills')" :key="skill">
-            {{ skill }}
-          </li>
+          <li v-for="skill in getSkills('segurihigiene')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
@@ -106,7 +108,7 @@ const { t } = useI18n()
           {{ t('experience.jobs.phoneHouse.description') }}
         </p>
         <ul class="skills">
-          <li v-for="skill in t('experience.jobs.phoneHouse.skills')" :key="skill">{{ skill }}</li>
+          <li v-for="skill in getSkills('phoneHouse')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
@@ -118,7 +120,7 @@ const { t } = useI18n()
           {{ t('experience.jobs.nielsen.description') }}
         </p>
         <ul class="skills">
-          <li v-for="skill in t('experience.jobs.nielsen.skills')" :key="skill">{{ skill }}</li>
+          <li v-for="skill in getSkills('nielsen')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
     </section>
