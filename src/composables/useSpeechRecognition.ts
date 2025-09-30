@@ -2,7 +2,7 @@ import { ref, onUnmounted } from 'vue'
 
 // Tipos para o reconhecimento de voz
 interface SpeechRecognitionEvent extends Event {
-  results: SpeechRecognitionResultList
+  results?: SpeechRecognitionResultList
 }
 
 interface SpeechRecognitionErrorEvent extends Event {
@@ -10,18 +10,18 @@ interface SpeechRecognitionErrorEvent extends Event {
 }
 
 interface SpeechRecognitionResultList {
-  [index: number]: SpeechRecognitionResult
+  [index: number]: SpeechRecognitionResult | undefined
   length: number
 }
 
 interface SpeechRecognitionResult {
-  [index: number]: SpeechRecognitionAlternative
+  [index: number]: SpeechRecognitionAlternative | undefined
   length: number
 }
 
 interface SpeechRecognitionAlternative {
-  transcript: string
-  confidence: number
+  transcript?: string
+  confidence?: number
 }
 
 interface SpeechRecognitionInterface {
@@ -75,10 +75,16 @@ export function useSpeechRecognition() {
       }
 
       recognition.onresult = (event: SpeechRecognitionEvent) => {
-        if (event.results && event.results.length > 0 && event.results[0].length > 0) {
-          const result = event.results[0][0].transcript.toLowerCase().trim()
-          transcript.value = result
-          console.log('Comando ouvido:', result)
+        if (event.results && event.results.length > 0) {
+          const firstResult = event.results[0]
+          if (firstResult && firstResult.length > 0) {
+            const alternative = firstResult[0]
+            if (alternative && alternative.transcript) {
+              const result = alternative.transcript.toLowerCase().trim()
+              transcript.value = result
+              console.log('Comando ouvido:', result)
+            }
+          }
         }
       }
 
