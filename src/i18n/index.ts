@@ -148,6 +148,16 @@ const pt = {
   common: {
     language: 'Idioma',
   },
+  voice: {
+    button: 'Comandos de Voz',
+    listening: 'A ouvir...',
+    notSupported: 'Reconhecimento de voz não suportado neste navegador',
+    error: 'Erro no reconhecimento de voz',
+    commandNotRecognized: 'Comando não reconhecido',
+    languageChanged: 'Idioma alterado',
+    alreadyInPortuguese: 'Já está em português',
+    help: 'Diga: "português", "inglês" ou "mudar idioma"',
+  },
 }
 
 // Mensagens em inglês
@@ -281,6 +291,16 @@ const en = {
   },
   common: {
     language: 'Language',
+  },
+  voice: {
+    button: 'Voice Commands',
+    listening: 'Listening...',
+    notSupported: 'Speech recognition not supported in this browser',
+    error: 'Speech recognition error',
+    commandNotRecognized: 'Command not recognized',
+    languageChanged: 'Language changed',
+    alreadyInEnglish: 'Already in English',
+    help: 'Say: "Portuguese", "English" or "change language"',
   },
 }
 

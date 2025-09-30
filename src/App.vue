@@ -1,12 +1,76 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { ref, watch } from 'vue'
+import { useSpeechRecognition } from './composables/useSpeechRecognition'
 
 const { t, locale } = useI18n()
+
+// Configuração do reconhecimento de voz
+const {
+  isListening,
+  isSupported,
+  transcript,
+  error,
+  startListening,
+  stopListening,
+  processCommand,
+} = useSpeechRecognition()
+
+// Estados para feedback visual
+const voiceMessage = ref('')
+const showVoiceMessage = ref(false)
 
 const changeLanguage = (lang: string) => {
   locale.value = lang
 }
+
+// Função para mostrar mensagem temporária
+const showTemporaryMessage = (message: string, duration: number = 3000) => {
+  voiceMessage.value = message
+  showVoiceMessage.value = true
+  setTimeout(() => {
+    showVoiceMessage.value = false
+  }, duration)
+}
+
+// Função para iniciar comando de voz
+const toggleVoiceCommand = () => {
+  if (!isSupported.value) {
+    showTemporaryMessage(t('voice.notSupported'))
+    return
+  }
+
+  if (isListening.value) {
+    stopListening()
+  } else {
+    // Definir idioma do reconhecimento baseado no idioma atual
+    const recognitionLang = locale.value === 'pt' ? 'pt-PT' : 'en-US'
+    startListening(recognitionLang)
+    showTemporaryMessage(t('voice.help'), 5000)
+  }
+}
+
+// Observar mudanças no transcript para processar comandos
+watch(transcript, (newTranscript) => {
+  if (newTranscript) {
+    console.log('Processando comando:', newTranscript)
+    const result = processCommand(newTranscript, locale.value, changeLanguage)
+
+    if (result.success) {
+      showTemporaryMessage(result.message, 2000)
+    } else {
+      showTemporaryMessage(t('voice.commandNotRecognized'), 2000)
+    }
+  }
+})
+
+// Observar erros do reconhecimento
+watch(error, (newError) => {
+  if (newError) {
+    showTemporaryMessage(t('voice.error'), 2000)
+  }
+})
 </script>
 
 <template>
@@ -18,26 +82,51 @@ const changeLanguage = (lang: string) => {
           <RouterLink to="/">{{ t('nav.home') }}</RouterLink>
           <RouterLink to="/experience">{{ t('nav.experience') }}</RouterLink>
           <RouterLink to="/about">{{ t('nav.about') }}</RouterLink>
-          <div class="language-selector">
-            <span class="language-label">{{ t('common.language') }}:</span>
+          <div class="controls">
+            <!-- Botão de comandos de voz -->
             <button
-              @click="changeLanguage('pt')"
-              :class="{ active: locale === 'pt' }"
-              class="lang-btn"
+              v-if="isSupported"
+              @click="toggleVoiceCommand"
+              :class="{ listening: isListening }"
+              class="voice-btn"
+              :title="t('voice.button')"
             >
-              PT
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 14c1.66 0 3-1.34 3-3l.02-6c0-1.66-1.34-3-3.02-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"
+                />
+              </svg>
+              <span class="voice-text">{{
+                isListening ? t('voice.listening') : t('voice.button')
+              }}</span>
             </button>
-            <button
-              @click="changeLanguage('en')"
-              :class="{ active: locale === 'en' }"
-              class="lang-btn"
-            >
-              EN
-            </button>
+
+            <div class="language-selector">
+              <span class="language-label">{{ t('common.language') }}:</span>
+              <button
+                @click="changeLanguage('pt')"
+                :class="{ active: locale === 'pt' }"
+                class="lang-btn"
+              >
+                PT
+              </button>
+              <button
+                @click="changeLanguage('en')"
+                :class="{ active: locale === 'en' }"
+                class="lang-btn"
+              >
+                EN
+              </button>
+            </div>
           </div>
         </div>
       </nav>
     </header>
+
+    <!-- Mensagem de feedback dos comandos de voz -->
+    <div v-if="showVoiceMessage" class="voice-message">
+      {{ voiceMessage }}
+    </div>
 
     <main>
       <RouterView />
@@ -219,12 +308,94 @@ main {
   }
 }
 
+/* Controls container */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Voice command button */
+.voice-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.voice-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.voice-btn.listening {
+  background: #ff6b6b;
+  border-color: #ff5252;
+  animation: pulse 1.5s infinite;
+}
+
+.voice-btn svg {
+  flex-shrink: 0;
+}
+
+.voice-text {
+  white-space: nowrap;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Voice message feedback */
+.voice-message {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #007acc;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 /* Language selector styles */
 .language-selector {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-left: 1rem;
   padding-left: 1rem;
   border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -259,11 +430,32 @@ main {
 }
 
 @media (max-width: 640px) {
+  .controls {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .voice-btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .voice-text {
+    display: none;
+  }
+
   .language-selector {
-    margin-left: 0;
     padding-left: 0;
     border-left: none;
-    margin-top: 0.5rem;
+  }
+
+  .voice-message {
+    top: 120px;
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+    text-align: center;
   }
 }
 </style>
