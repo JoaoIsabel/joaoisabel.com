@@ -5,7 +5,7 @@
         <h1>João Isabel</h1>
         <ul>
           <li><router-link to="/">Home</router-link></li>
-          <li><router-link to="/daily-news">Daily Code News</router-link></li>
+          <li><router-link to="/experience">Experience</router-link></li>
         </ul>
       </nav>
     </header>
@@ -13,8 +13,8 @@
     <main>
       <section class="hero">
         <h2>Welcome to João Isabel's Website</h2>
-        <p>Stay updated with the latest in code and technology.</p>
-        <router-link to="/daily-news" class="cta-button">View Daily Code News</router-link>
+        <p>Conheça minha jornada profissional em desenvolvimento e tecnologia.</p>
+        <router-link to="/experience" class="cta-button">Ver Experiência Profissional</router-link>
       </section>
     </main>
 
