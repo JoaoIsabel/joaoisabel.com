@@ -1,158 +1,129 @@
+<script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+</script>
+
 <template>
   <div class="experience-page">
     <section class="experience">
-      <h2>Experiência Profissional</h2>
-      <p class="intro">Minha jornada profissional em tecnologia e desenvolvimento</p>
+      <h2>{{ t('experience.title') }}</h2>
+      <p class="intro">{{ t('experience.subtitle') }}</p>
 
       <article class="experience-item">
-        <h3>Frontend Developer</h3>
-        <p class="company">Worten Portugal</p>
-        <p class="period">Mar 2021 - Present · 4 yrs 7 mos</p>
+        <h3>{{ t('experience.jobs.worten.title') }}</h3>
+        <p class="company">{{ t('experience.jobs.worten.company') }}</p>
+        <p class="period">{{ t('experience.jobs.worten.period') }}</p>
         <p class="description">
-          Full-time Frontend Developer focusing on modern web technologies and user experience
-          optimization.
+          {{ t('experience.jobs.worten.description') }}
         </p>
         <ul class="skills">
-          <li>Frontend Development</li>
-          <li>JavaScript</li>
-          <li>Web Technologies</li>
-          <li>User Experience</li>
+          <li v-for="skill in t('experience.jobs.worten.skills')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
       <article class="experience-item">
-        <h3>Education Volunteer</h3>
-        <p class="company">Junior Achievement Portugal</p>
-        <p class="period">Jan 2023 - Apr 2023 · 4 mos</p>
+        <h3>{{ t('experience.jobs.ja.title') }}</h3>
+        <p class="company">{{ t('experience.jobs.ja.company') }}</p>
+        <p class="period">{{ t('experience.jobs.ja.period') }}</p>
         <p class="description">
-          Seasonal volunteer inspiring and preparing children and young people to succeed in a
-          global economy through transformative experiences based on three fundamental pillars:
-          Citizenship and Financial Literacy, Education for Entrepreneurship and Skills for
-          employability.
+          {{ t('experience.jobs.ja.description') }}
         </p>
         <ul class="skills">
-          <li>Teaching</li>
-          <li>Public Speaking</li>
-          <li>Financial Literacy</li>
-          <li>Entrepreneurship Education</li>
+          <li v-for="skill in t('experience.jobs.ja.skills')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
       <article class="experience-item">
-        <h3>Freelance Web Developer</h3>
-        <p class="company">SheerME</p>
-        <p class="period">Nov 2020 - Feb 2021 · 4 mos</p>
+        <h3>{{ t('experience.jobs.sheerme.title') }}</h3>
+        <p class="company">{{ t('experience.jobs.sheerme.company') }}</p>
+        <p class="period">{{ t('experience.jobs.sheerme.period') }}</p>
         <p class="description">
-          Implementation of a front & back-end Digital Schedule to be used by customers and help
-          them to manage their bookings.
+          {{ t('experience.jobs.sheerme.description') }}
         </p>
         <ul class="skills">
-          <li>Frontend Development</li>
-          <li>Backend Development</li>
-          <li>Database Management</li>
-          <li>Customer Solutions</li>
+          <li v-for="skill in t('experience.jobs.sheerme.skills')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
       <article class="experience-item">
-        <h3>Manager</h3>
-        <p class="company">Portugal Roots</p>
-        <p class="period">Dec 2016 - Aug 2020 · 3 yrs 9 mos</p>
+        <h3>{{ t('experience.jobs.portugalRoots.title') }}</h3>
+        <p class="company">{{ t('experience.jobs.portugalRoots.company') }}</p>
+        <p class="period">{{ t('experience.jobs.portugalRoots.period') }}</p>
         <p class="description">
-          Seasonal management role overseeing operations and team coordination.
+          {{ t('experience.jobs.portugalRoots.description') }}
         </p>
         <ul class="skills">
-          <li>Team Management</li>
-          <li>Operations</li>
-          <li>Leadership</li>
-          <li>Project Coordination</li>
+          <li v-for="skill in t('experience.jobs.portugalRoots.skills')" :key="skill">
+            {{ skill }}
+          </li>
         </ul>
       </article>
 
       <article class="experience-item">
-        <h3>Operations Department</h3>
-        <p class="company">Banco Finantia</p>
-        <p class="period">Aug 2014 - Dec 2016 · 2 yrs 5 mos</p>
+        <h3>{{ t('experience.jobs.finantia.title') }}</h3>
+        <p class="company">{{ t('experience.jobs.finantia.company') }}</p>
+        <p class="period">{{ t('experience.jobs.finantia.period') }}</p>
         <p class="description">
-          Working in the operations department managing banking processes and procedures.
+          {{ t('experience.jobs.finantia.description') }}
         </p>
         <ul class="skills">
-          <li>Banking Operations</li>
-          <li>Financial Processes</li>
-          <li>Risk Management</li>
-          <li>Compliance</li>
+          <li v-for="skill in t('experience.jobs.finantia.skills')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
       <article class="experience-item">
-        <h3>Controller/Database Analyst</h3>
-        <p class="company">Neodent</p>
-        <p class="period">Mar 2012 - Aug 2014 · 2 yrs 6 mos</p>
+        <h3>{{ t('experience.jobs.neodent.title') }}</h3>
+        <p class="company">{{ t('experience.jobs.neodent.company') }}</p>
+        <p class="period">{{ t('experience.jobs.neodent.period') }}</p>
         <p class="description">
-          Responsible for database analysis and control processes, ensuring data integrity and
-          reporting accuracy.
+          {{ t('experience.jobs.neodent.description') }}
         </p>
         <ul class="skills">
-          <li>Database Analysis</li>
-          <li>Data Control</li>
-          <li>Reporting</li>
-          <li>Quality Assurance</li>
+          <li v-for="skill in t('experience.jobs.neodent.skills')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
       <article class="experience-item">
-        <h3>Controller</h3>
-        <p class="company">Segurihigiene - Medicina no Trabalho, SA</p>
-        <p class="period">Sep 2010 - Mar 2012 · 1 yr 7 mos</p>
+        <h3>{{ t('experience.jobs.segurihigiene.title') }}</h3>
+        <p class="company">{{ t('experience.jobs.segurihigiene.company') }}</p>
+        <p class="period">{{ t('experience.jobs.segurihigiene.period') }}</p>
         <p class="description">
-          Financial and operational control in occupational health and safety company.
+          {{ t('experience.jobs.segurihigiene.description') }}
         </p>
         <ul class="skills">
-          <li>Financial Control</li>
-          <li>Operational Management</li>
-          <li>Health & Safety</li>
-          <li>Compliance</li>
+          <li v-for="skill in t('experience.jobs.segurihigiene.skills')" :key="skill">
+            {{ skill }}
+          </li>
         </ul>
       </article>
 
       <article class="experience-item">
-        <h3>Member of Performance Reporting Team</h3>
-        <p class="company">The Phone House</p>
-        <p class="period">Sep 2009 - Sep 2010 · 1 yr 1 mo</p>
+        <h3>{{ t('experience.jobs.phoneHouse.title') }}</h3>
+        <p class="company">{{ t('experience.jobs.phoneHouse.company') }}</p>
+        <p class="period">{{ t('experience.jobs.phoneHouse.period') }}</p>
         <p class="description">
-          Part of the performance reporting team analyzing and reporting on business metrics and
-          KPIs.
+          {{ t('experience.jobs.phoneHouse.description') }}
         </p>
         <ul class="skills">
-          <li>Performance Analysis</li>
-          <li>Reporting</li>
-          <li>Data Analysis</li>
-          <li>KPI Management</li>
+          <li v-for="skill in t('experience.jobs.phoneHouse.skills')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
       <article class="experience-item">
-        <h3>Commercial Back Office Support</h3>
-        <p class="company">The Nielsen Company (ACNielsen)</p>
-        <p class="period">Aug 2007 - Sep 2009 · 2 yrs 2 mos</p>
+        <h3>{{ t('experience.jobs.nielsen.title') }}</h3>
+        <p class="company">{{ t('experience.jobs.nielsen.company') }}</p>
+        <p class="period">{{ t('experience.jobs.nielsen.period') }}</p>
         <p class="description">
-          Providing back office support for commercial operations at ACNielsen, supporting market
-          research activities.
+          {{ t('experience.jobs.nielsen.description') }}
         </p>
         <ul class="skills">
-          <li>Back Office Operations</li>
-          <li>Commercial Support</li>
-          <li>Market Research</li>
-          <li>Data Management</li>
+          <li v-for="skill in t('experience.jobs.nielsen.skills')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
     </section>
   </div>
 </template>
-
-<script setup lang="ts">
-// Add any interactivity here if needed
-</script>
 
 <style scoped>
 /* Experience page styles - Mobile First & Responsive */

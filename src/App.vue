@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const { t, locale } = useI18n()
+
+const changeLanguage = (lang: string) => {
+  locale.value = lang
+}
 </script>
 
 <template>
@@ -8,9 +15,26 @@ import { RouterLink, RouterView } from 'vue-router'
       <nav>
         <h1>João Isabel</h1>
         <div class="nav-links">
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/experience">Experience</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/">{{ t('nav.home') }}</RouterLink>
+          <RouterLink to="/experience">{{ t('nav.experience') }}</RouterLink>
+          <RouterLink to="/about">{{ t('nav.about') }}</RouterLink>
+          <div class="language-selector">
+            <span class="language-label">{{ t('common.language') }}:</span>
+            <button
+              @click="changeLanguage('pt')"
+              :class="{ active: locale === 'pt' }"
+              class="lang-btn"
+            >
+              PT
+            </button>
+            <button
+              @click="changeLanguage('en')"
+              :class="{ active: locale === 'en' }"
+              class="lang-btn"
+            >
+              EN
+            </button>
+          </div>
         </div>
       </nav>
     </header>
@@ -117,6 +141,7 @@ nav h1 {
 .nav-links {
   display: flex;
   gap: clamp(1rem, 3vw, 2rem);
+  align-items: center;
 }
 
 .nav-links a {
@@ -191,6 +216,54 @@ main {
 @media (min-width: 1200px) {
   nav {
     padding: 0 3rem;
+  }
+}
+
+/* Language selector styles */
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.language-label {
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.lang-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.lang-btn.active {
+  background: white;
+  color: #007acc;
+  border-color: white;
+}
+
+@media (max-width: 640px) {
+  .language-selector {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+    margin-top: 0.5rem;
   }
 }
 </style>

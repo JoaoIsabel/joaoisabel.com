@@ -1,64 +1,49 @@
+<script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+</script>
+
 <template>
   <div class="about">
     <div class="container">
       <section class="about-hero">
-        <h1>Sobre Mim</h1>
-        <p class="intro">
-          Desenvolvedor Frontend apaixonado por criar experiências digitais excepcionais
-        </p>
+        <h1>{{ t('about.title') }}</h1>
+        <p class="intro">{{ t('about.subtitle') }}</p>
       </section>
 
       <section class="about-content">
         <div class="content-grid">
           <div class="about-text">
-            <h2>Minha História</h2>
-            <p>
-              Sou um desenvolvedor frontend com mais de 4 anos de experiência na Worten Portugal,
-              onde me especializo em tecnologias web modernas e otimização da experiência do
-              usuário.
-            </p>
-            <p>
-              Ao longo da minha carreira, transitei de áreas como operações bancárias e análise de
-              dados para o desenvolvimento web, trazendo uma perspectiva única que combina
-              conhecimento técnico com experiência empresarial.
-            </p>
-            <p>
-              Acredito na importância da educação e do voluntariado, tendo contribuído com a Junior
-              Achievement Portugal para inspirar jovens a desenvolverem competências
-              empreendedoriais e de literacia financeira.
-            </p>
+            <h2>{{ t('about.story.title') }}</h2>
+            <p>{{ t('about.story.p1') }}</p>
+            <p>{{ t('about.story.p2') }}</p>
+            <p>{{ t('about.story.p3') }}</p>
           </div>
 
           <div class="skills-section">
-            <h2>Competências Técnicas</h2>
+            <h2>{{ t('about.skills.title') }}</h2>
             <div class="skills-grid">
               <div class="skill-category">
-                <h3>Frontend</h3>
+                <h3>{{ t('about.skills.frontend.title') }}</h3>
                 <ul>
-                  <li>JavaScript/TypeScript</li>
-                  <li>Vue.js</li>
-                  <li>HTML5 & CSS3</li>
-                  <li>Responsive Design</li>
+                  <li v-for="skill in t('about.skills.frontend.items')" :key="skill">
+                    {{ skill }}
+                  </li>
                 </ul>
               </div>
 
               <div class="skill-category">
-                <h3>Backend & Database</h3>
+                <h3>{{ t('about.skills.backend.title') }}</h3>
                 <ul>
-                  <li>Node.js</li>
-                  <li>Database Management</li>
-                  <li>API Development</li>
-                  <li>Data Analysis</li>
+                  <li v-for="skill in t('about.skills.backend.items')" :key="skill">{{ skill }}</li>
                 </ul>
               </div>
 
               <div class="skill-category">
-                <h3>Soft Skills</h3>
+                <h3>{{ t('about.skills.soft.title') }}</h3>
                 <ul>
-                  <li>Team Leadership</li>
-                  <li>Project Management</li>
-                  <li>Public Speaking</li>
-                  <li>Problem Solving</li>
+                  <li v-for="skill in t('about.skills.soft.items')" :key="skill">{{ skill }}</li>
                 </ul>
               </div>
             </div>

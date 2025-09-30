@@ -1,25 +1,27 @@
 <script setup lang="ts">
-// Home page logic here
+import { RouterLink } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
 
 <template>
   <div class="home">
     <section class="hero">
       <div class="hero-content">
-        <h1>Welcome to João Isabel's Website</h1>
+        <h1>{{ t('home.title') }}</h1>
         <p class="hero-subtitle">
-          Conheça minha jornada profissional em desenvolvimento e tecnologia.
+          {{ t('home.subtitle') }}
         </p>
-        <RouterLink to="/experience" class="cta-button">Ver Experiência Profissional</RouterLink>
+        <RouterLink to="/experience" class="cta-button">{{ t('home.cta') }}</RouterLink>
       </div>
     </section>
 
     <section class="intro">
       <div class="container">
-        <h2>Sobre Mim</h2>
+        <h2>{{ t('home.intro.title') }}</h2>
         <p>
-          Desenvolvedor Frontend na Worten Portugal com experiência em tecnologias modernas e paixão
-          por criar experiências digitais excepcionais.
+          {{ t('home.intro.description') }}
         </p>
       </div>
     </section>
