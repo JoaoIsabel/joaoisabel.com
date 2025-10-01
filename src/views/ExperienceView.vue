@@ -29,26 +29,14 @@ const getSkills = (jobKey: string) => {
       </article>
 
       <article class="experience-item">
-        <h3>{{ t('experience.jobs.ja.title') }}</h3>
-        <p class="company">{{ t('experience.jobs.ja.company') }}</p>
-        <p class="period">{{ t('experience.jobs.ja.period') }}</p>
+        <h3>{{ t('experience.jobs.freelancer.title') }}</h3>
+        <p class="company">{{ t('experience.jobs.freelancer.company') }}</p>
+        <p class="period">{{ t('experience.jobs.freelancer.period') }}</p>
         <p class="description">
-          {{ t('experience.jobs.ja.description') }}
+          {{ t('experience.jobs.freelancer.description') }}
         </p>
         <ul class="skills">
-          <li v-for="skill in getSkills('ja')" :key="skill">{{ skill }}</li>
-        </ul>
-      </article>
-
-      <article class="experience-item">
-        <h3>{{ t('experience.jobs.sheerme.title') }}</h3>
-        <p class="company">{{ t('experience.jobs.sheerme.company') }}</p>
-        <p class="period">{{ t('experience.jobs.sheerme.period') }}</p>
-        <p class="description">
-          {{ t('experience.jobs.sheerme.description') }}
-        </p>
-        <ul class="skills">
-          <li v-for="skill in getSkills('sheerme')" :key="skill">{{ skill }}</li>
+          <li v-for="skill in getSkills('freelancer')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
@@ -85,30 +73,6 @@ const getSkills = (jobKey: string) => {
         </p>
         <ul class="skills">
           <li v-for="skill in getSkills('neodent')" :key="skill">{{ skill }}</li>
-        </ul>
-      </article>
-
-      <article class="experience-item">
-        <h3>{{ t('experience.jobs.segurihigiene.title') }}</h3>
-        <p class="company">{{ t('experience.jobs.segurihigiene.company') }}</p>
-        <p class="period">{{ t('experience.jobs.segurihigiene.period') }}</p>
-        <p class="description">
-          {{ t('experience.jobs.segurihigiene.description') }}
-        </p>
-        <ul class="skills">
-          <li v-for="skill in getSkills('segurihigiene')" :key="skill">{{ skill }}</li>
-        </ul>
-      </article>
-
-      <article class="experience-item">
-        <h3>{{ t('experience.jobs.phoneHouse.title') }}</h3>
-        <p class="company">{{ t('experience.jobs.phoneHouse.company') }}</p>
-        <p class="period">{{ t('experience.jobs.phoneHouse.period') }}</p>
-        <p class="description">
-          {{ t('experience.jobs.phoneHouse.description') }}
-        </p>
-        <ul class="skills">
-          <li v-for="skill in getSkills('phoneHouse')" :key="skill">{{ skill }}</li>
         </ul>
       </article>
 
