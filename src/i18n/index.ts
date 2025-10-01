@@ -6,6 +6,7 @@ const pt = {
     home: 'Início',
     experience: 'Experiência',
     about: 'Sobre',
+    skills: 'Skills',
   },
   home: {
     title: 'João Isabel',
@@ -145,6 +146,28 @@ const pt = {
       },
     },
   },
+  skills: {
+    title: 'Skills Técnicas',
+    subtitle: 'Tecnologias e ferramentas que domino',
+    categories: {
+      frontend: {
+        title: 'Frontend',
+        technologies: ['JavaScript', 'HTML', 'CSS', 'React.js', 'Vue.js', 'Redux.js'],
+      },
+      backend: {
+        title: 'Backend & Database',
+        technologies: ['Node.js', 'Express.js', 'SQL', 'MySQL'],
+      },
+      tools: {
+        title: 'Ferramentas & Plataformas',
+        technologies: ['Git', 'GitHub', 'GitLab', 'Postman', 'Jira', 'Trello'],
+      },
+      business: {
+        title: 'Software Empresarial',
+        technologies: ['Primavera', 'PHC', 'Excel'],
+      },
+    },
+  },
   common: {
     language: 'Idioma',
   },
@@ -167,6 +190,7 @@ const en = {
     home: 'Home',
     experience: 'Experience',
     about: 'About',
+    skills: 'Skills',
   },
   home: {
     title: 'João Isabel',
@@ -287,6 +311,28 @@ const en = {
       soft: {
         title: 'Soft Skills',
         items: ['Team Leadership', 'Project Management', 'Public Speaking', 'Problem Solving'],
+      },
+    },
+  },
+  skills: {
+    title: 'Technical Skills',
+    subtitle: 'Technologies and tools I master',
+    categories: {
+      frontend: {
+        title: 'Frontend',
+        technologies: ['JavaScript', 'HTML', 'CSS', 'React.js', 'Vue.js', 'Redux.js'],
+      },
+      backend: {
+        title: 'Backend & Database',
+        technologies: ['Node.js', 'Express.js', 'SQL', 'MySQL'],
+      },
+      tools: {
+        title: 'Tools & Platforms',
+        technologies: ['Git', 'GitHub', 'GitLab', 'Postman', 'Jira', 'Trello'],
+      },
+      business: {
+        title: 'Business Software',
+        technologies: ['Primavera', 'PHC', 'Excel'],
       },
     },
   },

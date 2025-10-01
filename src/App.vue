@@ -100,6 +100,7 @@ onUnmounted(() => {
           <RouterLink to="/">{{ t('nav.home') }}</RouterLink>
           <RouterLink to="/experience">{{ t('nav.experience') }}</RouterLink>
           <RouterLink to="/about">{{ t('nav.about') }}</RouterLink>
+          <RouterLink to="/skills">{{ t('nav.skills') }}</RouterLink>
           <div class="controls">
             <!-- Botão de comandos de voz -->
             <button
