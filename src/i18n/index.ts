@@ -7,6 +7,7 @@ const pt = {
     experience: 'Experiência',
     about: 'Sobre',
     skills: 'Skills',
+    education: 'Educação',
   },
   home: {
     title: 'João Isabel',
@@ -168,6 +169,36 @@ const pt = {
       },
     },
   },
+  education: {
+    title: 'Educação',
+    subtitle: 'Formação académica e certificações',
+    items: {
+      bootcamp: {
+        title: 'Bootcamp Web Development',
+        institution: 'Wild Code School',
+        period: '09/2020 - Presente',
+        type: 'Bootcamp',
+      },
+      udemy: {
+        title: 'Responsive websites w/ HTML5 & CSS3',
+        institution: 'Udemy',
+        period: '05/2020 - 08/2020',
+        type: 'Curso Online',
+      },
+      master: {
+        title: 'Mestrado em Gestão',
+        institution: 'Instituto Superior de Gestão',
+        period: '2004 - 2010',
+        type: 'Mestrado',
+      },
+      trainer: {
+        title: 'Certificação de Formador (CAP)',
+        institution: 'INEPI',
+        period: '',
+        type: 'Certificação',
+      },
+    },
+  },
   common: {
     language: 'Idioma',
   },
@@ -191,6 +222,7 @@ const en = {
     experience: 'Experience',
     about: 'About',
     skills: 'Skills',
+    education: 'Education',
   },
   home: {
     title: 'João Isabel',
@@ -333,6 +365,36 @@ const en = {
       business: {
         title: 'Business Software',
         technologies: ['Primavera', 'PHC', 'Excel'],
+      },
+    },
+  },
+  education: {
+    title: 'Education',
+    subtitle: 'Academic background and certifications',
+    items: {
+      bootcamp: {
+        title: 'Bootcamp Web Development',
+        institution: 'Wild Code School',
+        period: '09/2020 - Present',
+        type: 'Bootcamp',
+      },
+      udemy: {
+        title: 'Responsive websites w/ HTML5 & CSS3',
+        institution: 'Udemy',
+        period: '05/2020 - 08/2020',
+        type: 'Online Course',
+      },
+      master: {
+        title: 'Master Degree in Management',
+        institution: 'Instituto Superior de Gestão',
+        period: '2004 - 2010',
+        type: 'Master Degree',
+      },
+      trainer: {
+        title: 'Trainer Certification (CAP)',
+        institution: 'INEPI',
+        period: '',
+        type: 'Certification',
       },
     },
   },
