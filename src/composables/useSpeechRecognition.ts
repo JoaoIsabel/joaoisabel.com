@@ -75,16 +75,20 @@ export function useSpeechRecognition() {
       }
 
       recognition.onresult = (event: SpeechRecognitionEvent) => {
-        if (event.results && event.results.length > 0) {
-          const firstResult = event.results[0]
-          if (firstResult && firstResult.length > 0) {
-            const alternative = firstResult[0]
-            if (alternative && alternative.transcript) {
-              const result = alternative.transcript.toLowerCase().trim()
-              transcript.value = result
-              console.log('Comando ouvido:', result)
+        try {
+          if (event?.results && event.results.length > 0) {
+            const firstResult = event.results[0]
+            if (firstResult && firstResult.length > 0) {
+              const alternative = firstResult[0]
+              if (alternative && typeof alternative.transcript === 'string') {
+                const result = alternative.transcript.toLowerCase().trim()
+                transcript.value = result
+                console.log('Comando ouvido:', result)
+              }
             }
           }
+        } catch (err) {
+          console.error('Erro ao processar resultado de voz:', err)
         }
       }
 
@@ -112,7 +116,9 @@ export function useSpeechRecognition() {
     }
 
     // Definir idioma do reconhecimento
-    recognition.lang = language
+    if (recognition.lang !== undefined) {
+      recognition.lang = language
+    }
     transcript.value = ''
     error.value = ''
 
